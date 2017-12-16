@@ -1,0 +1,498 @@
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:100,700,400" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <style>
+            body {
+                margin: 0;
+                background-color: #222;
+                overflow: hidden;
+            }
+            #nav {
+                width: 100vw;
+                height: 10vh;
+                background-color: #333;
+                box-shadow: 0 0px 10px rgba(0,0,0,0.2);
+                line-height: 10vh;
+                padding-left: 20px;
+            }
+            
+            #nav h1 {
+                font-family: "Roboto";
+                color: #FFF;
+                font-size: 20px;
+                display: inline;
+                font-weight: 100;
+            }
+            
+            #logo {
+                font-weight: 400 !important;
+                font-size: 25px !important;
+            }
+            
+            #logo_wash {
+                color: #FFF;
+                opacity: 0.1;
+                font-size: 70px;
+                font-family: "Roboto";
+                font-weight: 700 !important;
+                text-align: center;
+                display: none;
+            }
+            
+            #details {
+                display: inline-block;
+                width: 40vw;
+                height: 80vh;
+                margin: 0;
+                margin-top: 5vh;
+                margin-bottom: 5vh;
+                background-color: #111;
+                margin-left: 5vw;
+                border-radius: 10px;
+                vertical-align: middle;
+            }
+            
+            #list {
+                display: inline-block;
+                width: 45vw;
+                height: 80vh;
+                margin: 0;
+                margin-top: 5vh;
+                margin-bottom: 5vh;
+                float: left;
+                padding: 0;
+                margin-left: 5vw;
+                overflow-y: scroll;
+            }
+            #list::-webkit-scrollbar-track {
+                background-color: #222;
+            }
+
+            #list::-webkit-scrollbar {
+                width: 6px;
+                background-color: #AAA;
+            }
+
+            #list::-webkit-scrollbar-thumb {
+                border-radius: 10px;
+                background-color: #AAA;
+            }
+            .card, .card0, .card1, .card2 {
+                background-color: #FFF;
+                height: 10vh;
+                width: 100%;
+                border-radius: 2px;
+                box-shadow: 0 0px 10px rgba(0,0,0,0.2);
+                line-height: 10vh;
+                padding: 0;
+                margin-bottom: 15px;
+                margin-top: 15px;
+                cursor: pointer;
+                transition: background-color 0.2s;
+                
+            }
+            .card:hover {
+                box-shadow: 0 2px 15px rgba(0,0,0,0.2);
+                cursor: pointer;
+                background-color: #DDD;
+                
+            }
+            
+            .card0:hover {
+                box-shadow: 0 2px 15px rgba(0,0,0,0.2);
+                cursor: pointer;
+                background-color: darkgoldenrod;
+                
+            }
+            
+            .card1:hover {
+                box-shadow: 0 2px 15px rgba(0,0,0,0.2);
+                cursor: pointer;
+                background-color: darkgray;
+                
+            }
+            
+            .card2:hover {
+                box-shadow: 0 2px 15px rgba(0,0,0,0.2);
+                cursor: pointer;
+                background-color: saddlebrown;
+                filter: brightness(80%);
+                
+            }
+            
+            .card p, .card0 p, .card1 p, .card2 p {
+                display: inline-block;
+                color: #222;
+                margin: 0;
+                padding: 0;
+                margin-left: 10px;
+            }
+            
+            .card #no, .card0 #no0, .card1 #no1, .card2 #no2 {
+                font-size: 25px;
+                font-family: "Roboto";
+                font-weight: 900;
+                color: #CC0000;
+                
+            }
+            
+            .card #name, .card0 #name0, .card1 #name1, .card2 #name2 {
+                font-size: 25px;
+                font-family: "Roboto";
+                font-weight: 500;
+            }
+            
+            .card0 {
+                background-color: goldenrod;
+            }
+            
+            .card1 {
+                background-color: silver;
+            }
+            
+            .card2 {
+                background-color: saddlebrown;
+            }
+            
+            .card0 p, .card1 p, .card2 p {
+                color: #FFF;
+            }
+            
+            .card0 #no0, .card2 #no2 {
+                color: #FFF;
+                font-size: 30px;
+            }
+            
+            .card1 #no1 {
+                color: #222;
+                font-size: 30px;
+            }
+            
+            #face {
+                float: right;
+                border-radius: 3600px;
+                width: 6vh;
+                height: 6vh;
+                margin-top: 2vh;
+                margin-bottom: 2vh;
+                margin-right: 20px;
+            }
+            
+            #det_dp {
+                text-align: center;
+                width: 10vw;
+                height: 10vw;
+                border-radius: 3600px;
+                margin-top: 10vh;
+            }
+            
+            #det_name {
+                color: #FFF;
+                font-family: "Roboto";
+                font-size: 30px;
+            }
+            
+            #det_cont {
+                color: #FFF;
+                font-family: "Roboto";
+                font-size: 20px;
+            }
+            
+            #det_url {
+                margin-top: 10vh;
+                color: #FFF;
+                font-family: "Roboto";
+                font-size: 18px;
+            }
+            
+            #det_url_info {
+                color: #FFF;
+                opacity: 0.5;
+                font-size: 15px;
+                font-family: "Roboto";
+            }
+            
+            #refresh {
+                float: right;
+                margin-right: 4vw;
+                color: #FFF;
+                display: inline;
+                margin-top: 3vh;
+                cursor: pointer;
+                
+            }
+            
+            #loader {
+                color: #FFF;
+                font-size: 50px;
+                opacity: 0.3;
+                animation-name: rot;
+                animation-duration: 2s;
+                animation-iteration-count: infinite;
+            }
+            
+            #load p {
+                color: #FFF;
+                font-size: 15px;
+                opacity: 0.3;
+                font-family: "Roboto";
+            }
+            
+            #load {
+                margin-top: 35vh;
+            }
+            
+            @keyframes rot {
+                from {transform: rotate(360deg);}
+                to {transform: rotate(0);}
+            }
+
+        </style>
+    </head>
+    <body>
+        <div id="nav">
+            <h1 id="logo">JBoss Outreach</h1>
+            <h1>&nbsp;Top Contributors</h1>
+            <a id="refresh" onclick="refresh()"><i class="material-icons">refresh</i></a>
+        
+        </div>
+        <div id="list">
+            
+            <!--<div class="card">
+                <p id="no">#1</p>
+                <p id="name">Vishwas Adiga</p>
+            
+            </div>-->
+            <div id="load">
+                <center>
+                <i class="material-icons"id="loader">settings_backup_restore</i>
+                <p>Loading</p>
+                </center>
+            </div>
+            
+        </div>
+        
+        <div id="details">
+            <center>
+            <b><p id="logo_wash">JBoss</p></b>
+            <img src="" id="det_dp">
+            <p id="det_name">Vishwas-Adiga</p>
+            <p id="det_cont">0 contributions so far</p>
+            <p id="det_url">lnk</p>
+            <p id="det_url_info">Click on the list item to visit profile</p>
+            </center>
+        </div>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script>
+            
+            
+            function show_det(elem){
+                var i = elem.id;
+                document.getElementById("logo_wash").style.display = "none";
+                document.getElementById("det_dp").style.display = "block";
+                document.getElementById("det_name").style.display = "block";
+                document.getElementById("det_cont").style.display = "block";
+                document.getElementById("det_url").style.display = "block";
+                document.getElementById("det_url_info").style.display = "block";
+                
+                document.getElementById("det_dp").src = avatars[i];
+                document.getElementById("det_name").innerHTML = names[i];
+                document.getElementById("det_cont").innerHTML = (cont[i]+" contributions so far");
+                document.getElementById("det_url").innerHTML = urls[i];
+                
+                document.getElementById("details").style.lineHeight = "0";
+                
+            }
+            
+            function hide_det(){
+                document.getElementById("logo_wash").style.display = "block";
+                document.getElementById("det_dp").style.display = "none";
+                document.getElementById("det_name").style.display = "none";
+                document.getElementById("det_cont").style.display = "none";
+                document.getElementById("det_url").style.display = "none";
+                document.getElementById("det_url_info").style.display = "none";
+                document.getElementById("details").style.lineHeight = "60vh";
+            }
+            hide_det();
+            
+            
+            
+            var cont = [];
+            var repos = [];
+            var names = [];
+            var urls = [];
+            var avatars = [];
+            main();
+            async function main(){
+            $.ajax({
+                url:"https://puttere.000webhostapp.com/get_git.php/", //the page containing php script
+                type: "post", //request type,
+                dataType: 'text',
+                data: "url=" + "https://api.github.com/users/jboss-outreach/repos",
+                success: function(result){
+                    do {
+                    var rep = JSON.parse(result);
+                    
+                    //get list of all repos
+                    for(var a=0;a<rep.length;a++){
+                        repos.push(rep[a].name);
+                    }
+            
+                    //check toppers for each repo
+                    for(a=0;a<repos.length;a++){
+                        do {    
+                            $.ajax({
+                                url:"https://puttere.000webhostapp.com/get_git.php/", //the page containing php script
+                                type: "post", //request type,
+                                dataType: 'text',
+                                data: "url=" + 'https://api.github.com/repos/jboss-outreach/'+repos[a]+'/stats/contributors',
+                                success: function(result){
+                                    
+                                    var obj = JSON.parse(result);
+                                    for(var i=0;i<obj.length;i++){
+                                        var nm = names.indexOf(obj[i].author.login);
+                                        if(nm == -1){
+                                            
+                                            names.push(obj[i].author.login);
+                                            cont.push(Number(obj[i].total));
+                                            avatars.push(obj[i].author.avatar_url);
+                                            urls.push(obj[i].author.html_url);
+                                        } else {
+                                            console.log(nm);
+                                            cont[nm] += Number(obj[i].total);
+                                            
+                                        }
+                                    } 
+                                }//end of 2re ajax success function
+                            });
+                   
+                        }while(result == "Error:Could not resolve host: api.github.com; Temporary failure in name resolution"); 
+                    } 
+                   priint(); 
+                    }while(result =="Error:Could not resolve host: api.github.com; Temporary failure in name resolution");
+                }// end of ajax success function
+            });
+            }
+            function sleep(ms) {
+                return new Promise(resolve => setTimeout(resolve, ms));
+            }
+            
+            async function priint(){
+                if(flag){await sleep(20000);}
+                
+                //bubble sort
+                    for(var j=0;j<cont.length-1;j++){
+                        for(var k=0;k<cont.length-j;k++){
+                            if(cont[k]<cont[k+1]){
+                                var c_tmp = cont[k];
+                                cont[k]=cont[k+1];
+                                cont[k+1]=c_tmp;
+                        
+                                var n_tmp = names[k];
+                                names[k] = names[k+1];
+                                names[k+1] = n_tmp;
+                                
+                                var u_tmp = urls[k];
+                                urls[k] = urls[k+1];
+                                urls[k+1] = u_tmp;
+                                
+                                var a_tmp = avatars[k];
+                                avatars[k] = avatars[k+1];
+                                avatars[k+1] = a_tmp;
+                                
+                                
+                            }
+                        }
+                    }
+                    document.getElementById("load").style.display = "none";
+                    for(i=0;i<3;i++){
+                                        
+                                var uname = document.createElement("p");
+                                var rank = document.createElement("p");
+                
+                                var name_text = document.createTextNode(names[i]);
+                                var rank_text = document.createTextNode("#"+(i+1));
+                                        
+                                uname.appendChild(name_text);
+                                rank.appendChild(rank_text);
+                
+                
+                                uname.setAttribute("id", "name"+i);
+                                rank.setAttribute("id", "no"+i);
+                
+                                var pic = document.createElement("img");
+                                pic.setAttribute("src", avatars[i]);
+                                pic.setAttribute("id", "face");
+                
+                                var card = document.createElement("div");
+                                card.setAttribute("class", "card"+i);
+                                card.setAttribute("id", i);
+                
+                
+                
+                                card.appendChild(rank);
+                                card.appendChild(uname);
+                                card.appendChild(pic);
+                
+                                document.getElementById("list").appendChild(card);
+                                card.onmouseover= function() {show_det(this)};
+                                card.addEventListener("mouseout", hide_det);
+                                card.onclick = function(){clicked(this)};
+                    }
+                    
+                    for(i=3;i<50;i++){
+                                        
+                                var uname = document.createElement("p");
+                                var rank = document.createElement("p");
+                
+                                var name_text = document.createTextNode(names[i]);
+                                var rank_text = document.createTextNode("#"+(i+1));
+                                           
+                                uname.appendChild(name_text);
+                                rank.appendChild(rank_text);
+                
+                
+                                uname.setAttribute("id", "name");
+                                rank.setAttribute("id", "no");
+                
+                                var pic = document.createElement("img");
+                                pic.setAttribute("src", avatars[i]);
+                                pic.setAttribute("id", "face");
+                
+                                var card = document.createElement("div");
+                                card.setAttribute("class", "card");
+                                card.setAttribute("id", i);
+                
+                
+                                card.appendChild(rank);
+                                card.appendChild(uname);
+                                card.appendChild(pic);
+                
+                                document.getElementById("list").appendChild(card);
+                                card.onmouseover= function() {show_det(this)};
+                                card.addEventListener("mouseout", hide_det);
+                                card.onclick = function(){clicked(this)};
+                
+                    }
+            }
+            var flag= true;
+            async function refresh(){
+                var myNode = document.getElementById("list");
+                while (myNode.firstChild) {
+                    await sleep(20);
+                    myNode.removeChild(myNode.firstChild);
+                }
+                flag=false;
+                priint();
+            }
+            
+            function clicked(elem){
+                var i = elem.id;
+                window.open(urls[i]);
+            }
+        </script>
+    </body>
+    
+</html>
